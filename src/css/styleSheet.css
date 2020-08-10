@@ -1,0 +1,22 @@
+h1 {
+    font-family:Georgia;
+    font-weight:600;
+    font-size:3vw;
+    padding:1.5rem;
+}
+
+label {
+    padding-left:1.5rem;
+    font-size:2vw;
+}
+
+textarea {
+    width: 50%;
+    height: 150px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    resize: none;
+}
