@@ -1,6 +1,6 @@
 {
   "env": {
-    "CYPRESS_HOST": "/",
+    "HOST": "http://localhost:3000",
     "CYPRESS_RECORD_KEY": "process.env.CYPRESS_RECORD_KEY"
   },
   "watchForFileChanges": false,

@@ -17,7 +17,7 @@ services:
     command: --record --key $CYPRESS_RECORD_KEY
     environment:
       # pass base url to test pointing at the web application
-      - CYPRESS_baseUrl=http://react-app:80
+      - CYPRESS_HOST=http://react-app:80
       - CYPRESS_RECORD_KEY=${CYPRESS_RECORD_KEY}
     # share the current folder as volume to avoid copying
     working_dir: /e2e
