@@ -1,0 +1,7 @@
+{
+  "env": {
+    "host": "http://localhost:9002/iframe.html?id="
+  },
+  "watchForFileChanges": false,
+  "projectId": "fapg8b"
+}
