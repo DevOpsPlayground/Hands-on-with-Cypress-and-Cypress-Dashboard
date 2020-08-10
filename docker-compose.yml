@@ -1,0 +1,25 @@
+# e2e/docker-compose.yml from repo
+# https://github.com/bahmutov/cypress-open-from-docker-compose
+version: '3.2'
+services:
+  # this is the web application we are going to test
+  react-app:
+    build: .
+    ports:
+      - 8000:80
+    
+  # Cypress container
+  cypress:
+    # the Docker image to use from https://github.com/cypress-io/cypress-docker-images
+    image: "cypress/included:3.2.0"
+    depends_on:
+      - react-app
+    command: --record --key $CYPRESS_RECORD_KEY
+    environment:
+      # pass base url to test pointing at the web application
+      - CYPRESS_baseUrl=http://react-app:80
+      - CYPRESS_RECORD_KEY=${CYPRESS_RECORD_KEY}
+    # share the current folder as volume to avoid copying
+    working_dir: /e2e
+    volumes:
+      - ./:/e2e

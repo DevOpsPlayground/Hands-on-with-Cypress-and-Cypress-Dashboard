@@ -1,0 +1,15 @@
+version: 0.2
+
+phases:
+  pre_build:
+    commands:
+      - yarn
+  build:
+    commands:
+      - echo Build started on `date`
+      - docker-compose up --exit-code-from cypress
+  post_build:
+    commands:
+      - yarn build
+      - echo Build completed on `date`
+    
