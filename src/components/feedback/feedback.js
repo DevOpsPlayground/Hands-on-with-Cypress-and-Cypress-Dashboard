@@ -5,14 +5,14 @@ export default class Feedback extends Component {
     render() {
         return (
             <div>
-                <div className='col'>
+                <div className="col">
                     <form>
-                        <div className='row'>
+                        <div className="row">
                             <h1>Feedback Form</h1>
                         </div>
-                        <div className='row'>
+                        <div className="row">
                             <div className="radio-check">
-                                <label className='label-75'>
+                                <label className="label-75">
                                     <input
                                         type="radio"
                                         name="mood"
@@ -23,7 +23,7 @@ export default class Feedback extends Component {
                                 </label>
                             </div>
                             <div className="radio-check">
-                                <label className='label-75'>
+                                <label className="label-75">
                                     <input
                                         type="radio"
                                         name="mood"
@@ -34,7 +34,7 @@ export default class Feedback extends Component {
                                 </label>
                             </div>
                             <div className="radio-check">
-                                <label className='label-75'>
+                                <label className="label-75">
                                     <input
                                         type="radio"
                                         name="mood"
@@ -45,17 +45,17 @@ export default class Feedback extends Component {
                                 </label>
                             </div>
                         </div>
-                        <div className='row'>
-                            <div className='col-75'>
-                                <label className='label' htmlFor='comments'>Comments:</label>
+                        <div className="row">
+                            <div className="col-75">
+                                <label className="label" htmlFor="comments">Comments:</label>
                             </div>
-                            <div className='col-75'>
-                                <textarea id='comments' placeholder='Enter your comments here.' style={{height:'200px'}} /> 
+                            <div className="col-75">
+                                <textarea id="comments" placeholder="Enter your comments here." style={{height:"200px"}} /> 
                             </div> 
                         </div>
-                        <div className='row-25'>
-                            <div className='col-25'>
-                                <input type='submit' value ='Submit' />
+                        <div className="row-25">
+                            <div className="col-25">
+                                <input type="submit" value ="Submit" />
                             </div>
                         </div>
                     </form>
