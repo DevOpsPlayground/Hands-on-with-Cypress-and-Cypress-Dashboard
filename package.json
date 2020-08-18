@@ -5,8 +5,11 @@
   "dependencies": {
     "@babel/preset-env": "7.8.2",
     "@babel/preset-react": "7.8.0",
+    "axios": "^0.19.2",
     "bootstrap": "^4.5.0",
     "history": "^5.0.0",
+    "jquery": "^3.5.1",
+    "popper.js": "^1.16.1",
     "react": "^16.12.0",
     "react-bootstrap": "^1.0.0-beta.16",
     "react-dom": "^16.12.0",
