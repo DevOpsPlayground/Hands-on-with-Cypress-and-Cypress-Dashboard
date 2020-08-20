@@ -24,7 +24,8 @@ export default class Feedback extends Component {
         this.setState({comments: input.target.value});
     }
 
-    sendFeedback() {
+    sendFeedback(event) {
+        event.preventDefault()
         postFeedback(this.state);
     }
 
