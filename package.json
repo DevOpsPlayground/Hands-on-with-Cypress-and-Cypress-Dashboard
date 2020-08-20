@@ -22,7 +22,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "cypress run --project ./",
-    "test-dashboard": "cypress run --record --key $CYPRESS_KEY"
+    "test-dashboard": "cypress run --record --key $CYPRESS_RECORD_KEY"
   },
   "eslintConfig": {
     "extends": "react-app"

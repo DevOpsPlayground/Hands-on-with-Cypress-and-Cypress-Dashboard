@@ -11,10 +11,9 @@ services:
   # Cypress container
   cypress:
     # the Docker image to use from https://github.com/cypress-io/cypress-docker-images
-    image: "cypress/included:3.2.0"
+    image: "cypress/included:5.0.0"
     depends_on:
       - react-app
-    command: --record --key $CYPRESS_RECORD_KEY
     environment:
       # pass base url to test pointing at the web application
       - CYPRESS_HOST=http://react-app:80
@@ -23,3 +22,4 @@ services:
     working_dir: /e2e
     volumes:
       - ./:/e2e
+    command: --record --key ${CYPRESS_RECORD_KEY}
