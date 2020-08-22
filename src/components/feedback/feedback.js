@@ -9,6 +9,7 @@ export default class Feedback extends Component {
             mood: '',
             comments: '',
         };
+        this.other = false;
         this.handleMoodUpdate = this.handleMoodUpdate.bind(this);
         this.handleCommentsUpdate = this.handleCommentsUpdate.bind(this);
         this.sendFeedback = this.sendFeedback.bind(this);
@@ -45,6 +46,7 @@ export default class Feedback extends Component {
                                         name="mood"
                                         value="happy"
                                         className="radio-check-input"
+
                                     />
                                     Happy
                                 </label>
@@ -69,8 +71,9 @@ export default class Feedback extends Component {
                                         className="radio-check-input"
                                     />
                                     Other
-                                </label>
+                                </label> 
                             </div>
+                            { document.querySelector('input[value="other"]:checked')  ? <textarea id="other-mood"></textarea> : null }
                         </div>
                         <div className="row">
                             <div className="col-75">

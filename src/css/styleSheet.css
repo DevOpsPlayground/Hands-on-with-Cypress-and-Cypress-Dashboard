@@ -38,7 +38,7 @@ input[type=radio] {
     margin-right: 0px;
 }
 
-textarea {
+#comments {
     width: 100%;
     height: 150px;
     padding: 12px 20px;
@@ -47,4 +47,17 @@ textarea {
     border-radius: 4px;
     background-color: #f8f8f8;
     resize: none;
+}
+
+#other-mood {
+    height: 45px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    resize: none;
+    color: gray;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 0.5rem;
 }
