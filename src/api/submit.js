@@ -4,7 +4,9 @@ import {token, feedback_url} from '../config/env';
 const getHeaders = async () => {
     return {
         headers: {
-            Authorization: `Bearer ${token}`,
+          "Accept": "*/*",
+          "Content-Type": "text/plain",
+          'Access-Control-Allow-Origin': '*'
         },
     };
 }
@@ -13,7 +15,7 @@ const post = async (body) => {
     console.log(body);
     const headers = await getHeaders();
     try {
-      const response = await axios.post(feedback_url, body, headers);
+      const response = await axios.post(feedback_url, {httpMethod: 'POST', body: body}, headers);
       return response.data;
     } catch (error) {
       throw error;
