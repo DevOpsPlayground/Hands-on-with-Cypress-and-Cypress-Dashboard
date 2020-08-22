@@ -1,5 +1,5 @@
 import axios from 'axios/index';
-import {token, feedback_url} from '../config/env';
+import { feedback_url } from '../config/env';
 
 const getHeaders = async () => {
     return {
