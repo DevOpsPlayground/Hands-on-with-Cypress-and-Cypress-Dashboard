@@ -3,12 +3,12 @@ Set up repository for the DevOps Playground with Cypress Dashboard
 
 Running Cypress with record from your local machine
 
-cypress run --record --key <record key>
+`cypress run --record --key <record key>`
 
 --OR--
 
-export CYPRESS_RECORD_KEY=<record key>
-cypress run --record
+`export CYPRESS_RECORD_KEY=<record key>`
+`cypress run --record`
 
 TIP: Store your <record key> in your .env file, ADD: .env to .gitignore file
 
@@ -41,34 +41,34 @@ Now click on the big green ‘Code’ button copy the Https link of GitHub repos
 
 Now go to the terminal and run the following command to clone this repository to your local machine. 
 
-‘git clone <link to your GitHub repo>’
+`git clone <link to your GitHub repo>`
 
-Now open your repository that you just cloned down by typing ‘code .’ to open in visual studio code. Here lets take a look at the package.json file. In this file is all the dependencies that will be needed to run the application along with developer dependencies such as our Cypress engine. If we take a look at the scripts object we can see commands that we can use to get started. However these commands run through our project dependencies that need to be downloaded and installed. We will do this by opening up a terminal inside visual studio code (the IDE) through ‘Terminal-> New Terminal’ and typing ‘yarn’ .
+Now open your repository that you just cloned down by typing `code .` to open in visual studio code. Here lets take a look at the package.json file. In this file is all the dependencies that will be needed to run the application along with developer dependencies such as our Cypress engine. If we take a look at the scripts object we can see commands that we can use to get started. However these commands run through our project dependencies that need to be downloaded and installed. We will do this by opening up a terminal inside visual studio code (the IDE) through ‘Terminal-> New Terminal’ and typing `yarn`
 
  ![](./readme_images/installing-packages.png)
 
-Now the dependencies (including cypress) are installed we can run ‘yarn cypress open’ which will open up the Cypress UI. In the top right you will be able to log into Cypress. Do so with your GitHub account details.
+Now the dependencies (including cypress) are installed we can run `yarn cypress-open` which will open up the Cypress UI. In the top right you will be able to log into Cypress. Do so with your GitHub account details.
 
 Once logged in click on ‘Settings->Record Key’. Here you will find your record key needed to authorise your cypress test runner to record the tests to your Cypress Dashboard account. 
 
 To be able to use this key we will take a look at the example.env file. Copy the contents inside the file and create a new ‘.env’ file and paste the contents. Now we need to copy the record key to the right side of the assignment operator
 
-‘CYPRESS_RECORD_KEY=<your-cypress-dashboard-key>’
-e.g. CYPRESS_RECORD_KEY= XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
+`CYPRESS_RECORD_KEY=<your-cypress-dashboard-key>`
+e.g. `CYPRESS_RECORD_KEY= XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX`
 
 You will also need to copy the ‘Project ID’ from ‘Cypress->Settings->Project ID’ and place this value into the cypress.json file, replacing the temporary value that was assigned. 
 
-Now let’s test we have managed to integrate. We will do this by opening another terminal inside of visual studio code to run the application with ‘yarn start’. Once the application is running you should see this message ‘Compiled successfully’ in the terminal.
+Now let’s test we have managed to integrate. We will do this by opening another terminal inside of visual studio code to run the application with `yarn start`. Once the application is running you should see this message ‘Compiled successfully’ in the terminal.
  
 ![](./readme_images/terminal-application-running.png)
 
-Now we need to kill cypress in the first terminal (1: node) by navigating back and doing ‘ctrl+c’. Or you can manually close cypress. 
+Now we need to kill cypress in the first terminal (1: node) by navigating back and doing `ctrl+c`. Or you can manually close cypress. 
 
  ![](./readme_images/navigate-terminals.png)
 
-Once cypress is killed we need to export our cypress key by running ‘export CYPRESS_RECORD_KEY=< your-cypress-dashboard-key>’. You can copy this from your .env file to save you some time. 
+Once cypress is killed we need to export our cypress key by running `export CYPRESS_RECORD_KEY=< your-cypress-dashboard-key>`. You can copy this from your .env file to save you some time. 
 
-There is an initial test that has already been written so we can test our configuration with Cypress Dashboard. If we go to the package.json file scripts object we can see there is a command called ‘test-dashboard’. We will run this in our terminal with ‘yarn test-dashboard’. This command contains the following flags ‘--report’ and ‘--key’ which let cypress know we wish to record our results to Cypress dashboard along with where it can find the environment key for authentication. 
+There is an initial test that has already been written so we can test our configuration with Cypress Dashboard. If we go to the package.json file scripts object we can see there is a command called `test-dashboard`. We will run this in our terminal with `yarn test-dashboard`. This command contains the following flags `--report` and `--key` which let cypress know we wish to record our results to Cypress dashboard along with where it can find the environment key for authentication. 
 
 Feel free to look through the output in the console. You will see the test run and pass along with a video being created. The most important part to take note of is the ‘Uploading Results’ section as this tells us if it was successfully uploaded to our cypress dashboard. We can now confirm this by going to our cypress dashboard account. 
 
@@ -76,11 +76,11 @@ Feel free to look through the output in the console. You will see the test run a
 
 Woohoo! Congratulations you have now set up the application with cypress dashboard. But just to check it is all working well lets go ahead and edit the test file to fail. Go ahead and open ‘cypress/integration/test.spec.js’.
 
-We can make this test fail by inverting the assert on the submit button to ‘not.be.visible’
+We can make this test fail by inverting the assert on the submit button to `not.be.visible`
 
-cy.get('[type="submit"]').should('not.be.visible');
+`cy.get('[type="submit"]').should('not.be.visible');`
 
-Now run the ‘yarn test-dashboard’ command in the terminal and you should see the test fail. Once done uploading check back on Cypress Dashboard. (You may need to refresh the page). 
+Now run the `yarn test-dashboard` command in the terminal and you should see the test fail. Once done uploading check back on Cypress Dashboard. (You may need to refresh the page). 
 
  
 ![](./readme_images/error-message-cypress.png)
