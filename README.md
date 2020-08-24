@@ -17,11 +17,11 @@ Initial Set Up – Check Before You Start!
 Do you have a GitHub account? If not sign up here: https://github.com/
 
 
-Step 1: Getting Started with Cypress Dashboard
+# Step 1: Getting Started with Cypress Dashboard
 
 Go to https://www.cypress.io/dashboard and make an account! Pro-Tip you can just use your GitHub account to log in!
 
-Click on ‘Your Personal Organisation’ and then click ‘Set Up Project’ to create your first cypress dashboard project. You will be redirected to Cypress’s Dashboard setup guide. You can follow through this to set up independently or continue along with this guide to set it up with this project.
+Click on 'Your Personal Organisation' and then click ‘Set Up Project’ to create your first cypress dashboard project. You will be redirected to Cypress’s Dashboard setup guide. You can follow through this to set up independently or continue along with this guide to set it up with this project.
 
  
 
