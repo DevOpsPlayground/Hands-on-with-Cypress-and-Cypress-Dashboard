@@ -21,6 +21,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "cypress-open": "cypress open",
     "test": "cypress run --project ./",
     "test-dashboard": "cypress run --record --key $CYPRESS_RECORD_KEY"
   },
