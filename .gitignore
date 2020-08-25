@@ -3,4 +3,4 @@ node_modules/
 cypress.env.json
 cypress/videos/
 cypress/screenshots/
-.DS_STORE
+.DS_Store
