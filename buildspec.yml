@@ -7,9 +7,9 @@ phases:
   build:
     commands:
       - echo Build started on `date`
-      - docker-compose up --exit-code-from cypress
+      - yarn build
+      - yarn test-ci
   post_build:
     commands:
-      - yarn build
       - echo Build completed on `date`
     
