@@ -4,7 +4,7 @@ describe('CI test', () => {
     //refactor with a beforeEach for cy.visit command
     it('should run a test', () => {
         cy.visit(Cypress.env('HOST'));
-        cy.get('[type="submit"]').should('not.be.visible');
+        cy.get('[type="submit"]').should('be.visible');
     });
 
     /*** TO DO ***/
