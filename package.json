@@ -21,8 +21,10 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "cypress-open": "cypress open",
     "test": "cypress run --project ./",
-    "test-dashboard": "cypress run --record --key $CYPRESS_RECORD_KEY"
+    "test-dashboard": "cypress run --record --key $CYPRESS_RECORD_KEY",
+    "test-ci": "docker-compose up --exit-code-from cypress"
   },
   "eslintConfig": {
     "extends": "react-app"
