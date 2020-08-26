@@ -208,3 +208,82 @@ Once everything is green go ahead and click `Merge pull request`.
 
 And there you have it. Now we have set up Cypress Dashboard to run locally and in our CI pipeline. Now it is time for the final stage. Getting hands on with writing some Cypress tests!
 
+# Stage 3: Writing Cypress Tests!
+
+Let’s get started writing some cypress tests. First lets look more closely at the test in the  `test.spec.js` file. This test visits the application that we want to test like how you type in the URL in a search bar to visit a website. The URL for the application comes from the `HOST` variable that is declared in our `cypress.json` file. We can access cypress environment variables from this file by using `Cypress.env()`. 
+
+Before we make any changes to the code, go ahead and make a branch off develop like we did earlier and call it `cypress-tests`. 
+
+We are going to be writing a few tests in this file and cypress will need to visit the application multiple times. To avoid code duplication for the set up we can use the beforeEach method. Enter this code under the comment like so:
+
+`//refactor with a beforeEach for cy.visit command
+    beforeEach(() => cy.visit(Cypress.env('HOST')));`
+
+Now remove the `cy.visit` command from the test, so it now looks like this: 
+
+` it('should run a test', () => {
+        cy.get('[type="submit"]').should('be.visible');
+    });`
+
+This is better but there is still some improvement to be made. The `cy.get` command gets elements from the dom that match the given parameter. Here we are getting the submit button with `’[type=”submit”]’`. This is acceptable but personally I prefer adding `data-qa` attributes to the elements as they are less likely to be changed and is also a way to document what parts of the application are being tested when looking through the code. 
+
+Lets find the submit button in the application and add the `data-qa` attribute. It can be found by going to `src/components/feedback/feedback.js`. Look through the code and see if you can find where `type=”submit”` is in the code. When you have found it add the following before the `type` attribute: 
+
+`data-qa=”submit-button”`
+
+It should now look like the following:
+` <input data-qa="submit-button" type="submit" value="Submit"/>`
+From personal experience I have always found it best to add the `data-qa` attributes just after the element tag. This is because it makes it easier to find and makes it less likely to be accidently removed through a pull request or merge. 
+
+Now we have added this one more thing I like to do to reduce code duplication and make it easier to update any of these data-qa values in our tests is by creating a constant file where they can be stored. 
+
+Make a folder called `constants` in the root of the application and create a file called `feedbackConst.js`.
+
+Enter the following code: 
+` export const feedbackPage = {
+    submitBtn: '[data-qa="submit-button"]',
+};`
+
+Now we need to import the object into our `test.spec.js` file. Put this code at the top of the file like so: 
+` /*globals Cypress cy*/
+import { feedbackPage } from '../../constants/feedbackConst';`
+
+Now we can use this object in the test like this, I also updated the test description: 
+
+` it('should have a submit button', () => {
+        cy.get(feedbackPage.submitBtn).should('be.visible');
+    });`
+
+I am also going to rename the test file to `feedback.spec.js`. Now run the test from the terminal with `yarn test`. Note: make sure your application is still running in the other terminal if the test fails!
+
+![](./readme_images/3.1.png) 
+
+Now try thinking of other similar tests you can write using the following:
+`cy.get(<element>).click();
+cy.get(<element>).should(‘something’);`
+
+Make sure you add your `data-qa` attributes to the elements you want to test. If you get stuck with finding an element in the code you can run the application and inspect (rightclick -> inspect) and then select the element with the selector and see when attributes are on the element to find it in the code. 
+
+![](./readme_images/3.2.png)
+
+Here is an example (I will be going through more tests cases live).
+
+` it('should select a button', () => {
+        cy.get(feedbackPage.happyBtn).should('not.be.checked');
+        cy.get(feedbackPage.happyBtn).click();
+        cy.get(feedbackPage.happyBtn).should('be.checked');
+    });`
+
+This test checks the state of the element before acting on the element to change it. It is good to check the negative so you can be sure of the expected behaviour. 
+
+Once you are happy with your tests run `yarn test` to check they pass before committing your changes. Then make a pull request like we did earlier from your `cypress-tests` branch to the `develop` branch. Check your `CodeBuild` pipeline is building and also check the `Cypress Dashboard` to see your tests. 
+
+It is really useful to be able to see tests coming through on Cypress Dashboard. This way your testers and devs do not need to see the pipeline to know if the build is failing from a test. It also makes it really easy to see the reason why a test is failing and where, making any issues easier to fix or respond to. 
+
+Congratulations you have finished! To reflect you have:
+-	Set up Cypress with Cypress Dashboard
+-	Linked Cypress Dashboard to your GitHub
+-	Ran your Cypress Tests in an automated way through a CI pipeline using CodeBuild
+
+Please feel free to send me a linkedIn connection request: https://www.linkedin.com/in/treeofgrace/
+
