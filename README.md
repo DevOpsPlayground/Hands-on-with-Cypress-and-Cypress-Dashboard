@@ -1,4 +1,9 @@
 # playground-cypress-dashboard
+
+Do you have a GitHub account? If not sign up here: https://github.com/
+
+---
+
 Set up repository for the DevOps Playground with Cypress Dashboard
 
 Running Cypress with record from your local machine
@@ -10,16 +15,14 @@ Running Cypress with record from your local machine
 `export CYPRESS_RECORD_KEY=<record key>`
 `cypress run --record`
 
-TIP: Store your <record key> in your .env file, ADD: .env to .gitignore file
-
-Initial Set Up – Check Before You Start!
-
-Do you have a GitHub account? If not sign up here: https://github.com/
+> TIP: Store your <record key> in your .env file, ADD: .env to .gitignore file
 
 
 # Stage 1: Getting Started with Cypress Dashboard
 
-Go to https://www.cypress.io/dashboard and make an account! Pro-Tip you can just use your GitHub account to log in!
+Go to https://www.cypress.io/dashboard and make an account! 
+
+> TIP: you can just use your GitHub account to log in!
 
 Click on 'Your Personal Organisation' and then click ‘Set Up Project’ to create your first cypress dashboard project. You will be redirected to Cypress’s Dashboard setup guide. You can follow through this to set up independently or continue along with this guide to set it up with this project.
 
@@ -30,12 +33,12 @@ First fork this repository into your own GitHub account by clicking the ‘Fork�
 ![](./readme_images/fork-repo.png)
   
 Once GitHub has finished copying you should now see this repository under your GitHub username with below the original repository that you Forked from.  
-‘<Your_UserName>/playground-cypress-dashboard’
+`<Your_UserName>/playground-cypress-dashboard`
 
 ![](./readme_images/forked-repo.png)
 
  
-Now click on the big green ‘Code’ button copy the Https link of GitHub repository. 
+Click on the big green ‘Code’ button copy the Https link of GitHub repository. 
 
  ![](./readme_images/Copy-github.png)
 
@@ -43,11 +46,11 @@ Now go to the terminal and run the following command to clone this repository to
 
 `git clone <link to your GitHub repo>`
 
-Now open your repository that you just cloned down by typing `code .` to open in visual studio code. Here lets take a look at the package.json file. In this file is all the dependencies that will be needed to run the application along with developer dependencies such as our Cypress engine. If we take a look at the scripts object we can see commands that we can use to get started. However these commands run through our project dependencies that need to be downloaded and installed. We will do this by opening up a terminal inside visual studio code (the IDE) through ‘Terminal-> New Terminal’ and typing `yarn`
+Open your repository that you just cloned down by typing `code .` to open in visual studio code. Here lets take a look at the package.json file. In this file is all the dependencies that will be needed to run the application along with developer dependencies such as our Cypress engine. If we take a look at the scripts object we can see commands that we can use to get started. However these commands run through our project dependencies that need to be downloaded and installed. We will do this by opening up a terminal inside visual studio code (the IDE) through ‘Terminal-> New Terminal’ and typing `yarn`
 
  ![](./readme_images/installing-packages.png)
 
-Now the dependencies (including cypress) are installed we can run `yarn cypress-open` which will open up the Cypress UI. In the top right you will be able to log into Cypress. Do so with your GitHub account details.
+The dependencies (including cypress) are installed we can run `yarn cypress-open` which will open up the Cypress UI. In the top right you will be able to log into Cypress. Do so with your GitHub account details.
 
 ![](./readme_images/1.5.png)
 
@@ -60,11 +63,11 @@ e.g. `CYPRESS_RECORD_KEY= XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX`
 
 You will also need to copy the ‘Project ID’ from ‘Cypress->Settings->Project ID’ and place this value into the cypress.json file, replacing the temporary value that was assigned. 
 
-Now let’s test we have managed to integrate. We will do this by opening another terminal inside of visual studio code to run the application with `yarn start`. Once the application is running you should see this message ‘Compiled successfully’ in the terminal.
+Let’s test we have managed to integrate. We will do this by opening another terminal inside of visual studio code to run the application with `yarn start`. Once the application is running you should see this message ‘Compiled successfully’ in the terminal.
  
 ![](./readme_images/terminal-application-running.png)
 
-Now we need to kill cypress in the first terminal (1: node) by navigating back and doing `ctrl+c`. Or you can manually close cypress. 
+We need to kill cypress in the first terminal (1: node) by navigating back and doing `ctrl+c` (Or you can manually close cypress). 
 
  ![](./readme_images/navigate-terminals.png)
 
@@ -101,7 +104,6 @@ In Cypress Dashboard go to ‘Integrations’ and select ‘Install’ for GitHu
 You will be redirected to GitHub where you chose to allow Cypress Dashboard access to all repositories in your account or you can just select this repository ‘playground-cypress-dashboard’.
 
 ![](./readme_images/cypress-install-github.png)
-
  
 Once installed Cypress Dashboard will submit status checks for your cypress test runs on pull requests. We can make this check required by configuring the settings of our GitHub repo. Go to your GitHub Repo and click on ‘Settings’. As you have forked this repository it will have inherited the branch protection policies that were already set up. 
 
@@ -109,7 +111,7 @@ Next we will move onto the next section with adding in CI to trigger this Cypres
 
 # Stage 2: Automating Cypress Tests in CI
 
-Ok so we how have Cypress Dashboard linked up to our GitHub repo. Now it is time to set up our CI pipeline in Code Build. To do so log into the aws.amazon.com console with either your own account or IAM user or the one that we have provided. 
+Ok, so we how have Cypress Dashboard linked up to our GitHub repo. Now it is time to set up our CI pipeline in Code Build. To do so log into the aws.amazon.com console with either your own account or IAM user or the one that we have provided. 
 
 ![](./readme_images/2.1.png)
 
@@ -119,8 +121,9 @@ Once logged in go to code build by typing `CodeBuild` in the search bar. Then cl
 
 Fill out the following Details:
 
-Project name: ` playground-<your-animal>`
-Click `Additional configuration` and for `Key` enter `name`. For `Value` enter `cypress-playground`.
+* Project name: ` playground-<your-animal>`
+* Click `Additional configuration` and for `Key` enter `name`.
+* For `Value` enter `cypress-playground`.
 
 For `Source provider` select GitHub. If you are using our AWS account you will need your github repository to be public and copy and paste the HTTPS URL into the repository Source.
 
@@ -151,20 +154,22 @@ For event type select the following
 `PULL_REQUEST_UPDATED`
 `PULL_REQUEST_REOPENED`
 
-Now for the Environment section make sure you select the following
-`Managed image`
-Operating system `Ubuntu`
-Runtime(s) `Standard`
-Image `aws/codebuild/standard:4.0`
-Image version `Always use the latest image`
-Environment type `Linux`
-Privileged : checked
+Now for the Environment section make sure you select the following: 
+
+* `Managed image`
+* Operating system `Ubuntu`
+* Runtime(s) `Standard`
+* Image `aws/codebuild/standard:4.0`
+* Image version `Always use the latest image`
+* Environment type `Linux`
+* Privileged : checked
 
 ![](./readme_images/2.6.png)
 
-For `Service role` select `Existing service role`. Then for `Role ARN` use:  `arn:aws:iam::630895193694:role/codebuild-playground-animal-service-role`. Uncheck `Allow AWS CodeBuild to modify this service role so it can be used with this build project`
+For `Service role` select `Existing service role`. Then for `Role ARN` use:  `arn:aws:iam::630895193694:role/codebuild-playground-animal-service-role`. 
+Uncheck `Allow AWS CodeBuild to modify this service role so it can be used with this build project`
 
-Next click on Additional configuration and scroll down to `Environment variables`. Here is where we need to add our Cypress Dashboard access key from our .env file. 
+Next, click on Additional configuration and scroll down to `Environment variables`. Here is where we need to add our Cypress Dashboard access key from our .env file. 
 For Name enter: `CYPRESS_RECORD_KEY` and for value enter your key. We will keep Type as `Plaintext` this time but better practice would be to use the AWS Secrets Manager. 
 
 That is all we need to do for now as our repository contains the buildspec file. Click on `Create build project`. While that creates lets go and look at the buildspec.yml file inside VS Code. 
@@ -177,18 +182,19 @@ Under the `scripts` object we can see this command runs ` docker-compose up --ex
 
 Before we create a PR request let’s first test out the `yarn test-ci` in the terminal to check our files are configured properly. 
 
-Hint: you may need to `export` your `CYPRESS_RECORD_KEY` from your .env file. 
+> Hint: you may need to `export` your `CYPRESS_RECORD_KEY` from your .env file. 
 
 Let’s commit our configuration to a new branch. The easiest way is to select the bottom left branch name. This will then open up a popup. Select `Create new branch from…` then enter a name of your branch, for example `dashboard-setup`.
 
 ![](./readme_images/2.7.png)
 
 Then select `origin/develop`. Now in terminal enter the following commands:
-`git add .`
-`git commit -m ‘dashboard setup’`
-` git push --set-upstream origin <your-branch-name> `
 
-Now go to your GitHub repository and make a pull request. Make sure you select your repository and the `develop` branch as the base. It should look like below and click `Create pull request`. 
+* `git add .`
+* `git commit -m ‘dashboard setup’`
+* ` git push --set-upstream origin <your-branch-name> `
+
+Go to your GitHub repository and make a pull request. Make sure you select your repository and the `develop` branch as the base. It should look like below and click `Create pull request`. 
 
 ![](./readme_images/2.8.png)
 
@@ -216,23 +222,33 @@ Before we make any changes to the code, go ahead and make a branch off develop l
 
 We are going to be writing a few tests in this file and cypress will need to visit the application multiple times. To avoid code duplication for the set up we can use the beforeEach method. Enter this code under the comment like so:
 
-`//refactor with a beforeEach for cy.visit command
-    beforeEach(() => cy.visit(Cypress.env('HOST')));`
+```javascript
+//refactor with a beforeEach for cy.visit command
+  beforeEach(() => cy.visit(Cypress.env('HOST')));
+```
 
 Now remove the `cy.visit` command from the test, so it now looks like this: 
 
-` it('should run a test', () => {
-        cy.get('[type="submit"]').should('be.visible');
-    });`
+```javascript
+it('should run a test', () => {
+  cy.get('[type="submit"]').should('be.visible');
+});
+```
 
 This is better but there is still some improvement to be made. The `cy.get` command gets elements from the dom that match the given parameter. Here we are getting the submit button with `’[type=”submit”]’`. This is acceptable but personally I prefer adding `data-qa` attributes to the elements as they are less likely to be changed and is also a way to document what parts of the application are being tested when looking through the code. 
 
 Lets find the submit button in the application and add the `data-qa` attribute. It can be found by going to `src/components/feedback/feedback.js`. Look through the code and see if you can find where `type=”submit”` is in the code. When you have found it add the following before the `type` attribute: 
 
-`data-qa=”submit-button”`
+```html
+data-qa=”submit-button”
+```
 
 It should now look like the following:
-` <input data-qa="submit-button" type="submit" value="Submit"/>`
+
+```html
+<input data-qa="submit-button" type="submit" value="Submit"/>
+```
+
 From personal experience I have always found it best to add the `data-qa` attributes just after the element tag. This is because it makes it easier to find and makes it less likely to be accidently removed through a pull request or merge. 
 
 Now we have added this one more thing I like to do to reduce code duplication and make it easier to update any of these data-qa values in our tests is by creating a constant file where they can be stored. 
@@ -240,27 +256,38 @@ Now we have added this one more thing I like to do to reduce code duplication an
 Make a folder called `constants` in the root of the application and create a file called `feedbackConst.js`.
 
 Enter the following code: 
-` export const feedbackPage = {
+
+```javascript
+export const feedbackPage = {
     submitBtn: '[data-qa="submit-button"]',
-};`
+};
+```
 
 Now we need to import the object into our `test.spec.js` file. Put this code at the top of the file like so: 
-` /*globals Cypress cy*/
-import { feedbackPage } from '../../constants/feedbackConst';`
+
+```javascript
+/*globals Cypress cy*/
+import { feedbackPage } from '../../constants/feedbackConst';
+```
 
 Now we can use this object in the test like this, I also updated the test description: 
 
-` it('should have a submit button', () => {
-        cy.get(feedbackPage.submitBtn).should('be.visible');
-    });`
+```javascript
+it('should have a submit button', () => {
+  cy.get(feedbackPage.submitBtn).should('be.visible');
+});
+```
 
 I am also going to rename the test file to `feedback.spec.js`. Now run the test from the terminal with `yarn test`. Note: make sure your application is still running in the other terminal if the test fails!
 
 ![](./readme_images/3.1.png) 
 
 Now try thinking of other similar tests you can write using the following:
-`cy.get(<element>).click();
-cy.get(<element>).should(‘something’);`
+
+```javascript
+cy.get(<element>).click();
+cy.get(<element>).should(‘something’);
+```
 
 Make sure you add your `data-qa` attributes to the elements you want to test. If you get stuck with finding an element in the code you can run the application and inspect (rightclick -> inspect) and then select the element with the selector and see when attributes are on the element to find it in the code. 
 
@@ -268,11 +295,13 @@ Make sure you add your `data-qa` attributes to the elements you want to test. If
 
 Here is an example (I will be going through more tests cases live).
 
-` it('should select a button', () => {
-        cy.get(feedbackPage.happyBtn).should('not.be.checked');
-        cy.get(feedbackPage.happyBtn).click();
-        cy.get(feedbackPage.happyBtn).should('be.checked');
-    });`
+```javascript
+it('should select a button', () => {
+  cy.get(feedbackPage.happyBtn).should('not.be.checked');
+  cy.get(feedbackPage.happyBtn).click();
+  cy.get(feedbackPage.happyBtn).should('be.checked');
+});
+```
 
 This test checks the state of the element before acting on the element to change it. It is good to check the negative so you can be sure of the expected behaviour. 
 
