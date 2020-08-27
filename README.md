@@ -197,9 +197,9 @@ Once logged in go to code build by typing `CodeBuild` in the search bar. Then cl
 
 Fill out the following Details:
 
-* Project name: ` playground-<your-animal>`
+* Project name: ` playground-cypress-<your-number>`
 * Click `Additional configuration` and for `Key` enter `name`.
-* For `Value` enter `cypress-playground`.
+* For `Value` enter `playground-cypress`.
 
 For `Source provider` select GitHub. If you are using our AWS account you will need your github repository to be public and copy and paste the HTTPS URL into the repository Source.
 
