@@ -1,10 +1,22 @@
-# playground-cypress-dashboard
+# Initial Set Up - Check Before You Start!
 
 Do you have a GitHub account? If not sign up here: https://github.com/
 
----
+Have you logged into Guacamole?
+Log in via the IP: http://54.171.164.67/#/
+You will need your username and password from: <LINK>
 
-Set up repository for the DevOps Playground with Cypress Dashboard
+![](./readme_images/0.1.png)
+
+Then select `VNC-1`
+
+When it is opened you should see `VSCode` on the `Desktop`. Double click it to open. There is also a web browser that you can open here: 
+
+![](./readme_images/0.2.png)
+
+Log into your GitHub account inside of the Guacamole instance browser (firefox): https://github.com
+
+---
 
 Running Cypress with record from your local machine
 
@@ -20,15 +32,15 @@ Running Cypress with record from your local machine
 
 # Stage 1: Getting Started with Cypress Dashboard
 
-Go to https://www.cypress.io/dashboard and make an account! 
+Go to https://dashboard.cypress.io/login and make an account! 
 
 > TIP: you can just use your GitHub account to log in!
 
-Click on 'Your Personal Organisation' and then click ‘Set Up Project’ to create your first cypress dashboard project. You will be redirected to Cypress’s Dashboard setup guide. You can follow through this to set up independently or continue along with this guide to set it up with this project.
+Once it is all linked up you should see this screen. 
 
  ![](./readme_images/cypress-account.png)
 
-First fork this repository into your own GitHub account by clicking the ‘Fork’ button in the top right: https://github.com/GraceATree/playground-cypress-dashboard
+You will need to fork this repository into your own GitHub account by clicking the ‘Fork’ button in the top right: https://github.com/DevOpsPlayground/Hands-on-with-Cypress-and-Cypress-Dashboard
 
 ![](./readme_images/fork-repo.png)
   
@@ -38,44 +50,73 @@ Once GitHub has finished copying you should now see this repository under your G
 ![](./readme_images/forked-repo.png)
 
  
-Click on the big green ‘Code’ button copy the Https link of GitHub repository. 
+Now click on the big green `Code` button copy the HTTPS link of the GitHub repository. For this use `right-click -> copy`. 
 
  ![](./readme_images/Copy-github.png)
 
-Now go to the terminal and run the following command to clone this repository to your local machine. 
+Now go to VSCode that you opened. You can do `alt+tab` to navigate between applications or select it from the top bar next to applications. 
+
+![](./readme_images/1.3.1.png)
+
+Maximise VS Code if you have not already. Click `Terminal` at the top of the screen. Or `ctrl+shift` + backtick.
+
+![](./readme_images/1.3.2.png)
+
+In the terminal enter the following command (right click paste your repository link): 
 
 `git clone <link to your GitHub repo>`
 
-Open your repository that you just cloned down by typing `code .` to open in visual studio code. Here lets take a look at the package.json file. In this file is all the dependencies that will be needed to run the application along with developer dependencies such as our Cypress engine. If we take a look at the scripts object we can see commands that we can use to get started. However these commands run through our project dependencies that need to be downloaded and installed. We will do this by opening up a terminal inside visual studio code (the IDE) through ‘Terminal-> New Terminal’ and typing `yarn`
+
+![](./readme_images/1.3.3.png)
+
+Once the clone is complete enter
+
+`cd Hands-on-with-Cypress-and-Cypress-Dashboard`
+`code .`
+
+Here lets take a look at the package.json file. In this file is all the dependencies that will be needed to run the application along with developer dependencies such as our Cypress engine. If we take a look at the scripts object we can see commands that we can use to get started. However these commands run through our project dependencies that need to be downloaded and installed. 
+
+Enter ‘yarn’ into the terminal.
 
  ![](./readme_images/installing-packages.png)
 
-The dependencies (including cypress) are installed we can run `yarn cypress-open` which will open up the Cypress UI. In the top right you will be able to log into Cypress. Do so with your GitHub account details.
+The dependencies (including cypress) are installed we can run `yarn cypress open` which will open up the Cypress UI. In the top right you will be able to log into Cypress. Do so with your GitHub account details.
 
 ![](./readme_images/1.5.png)
 
-Once logged in click on ‘Settings->Record Key’. Here you will find your record key needed to authorise your cypress test runner to record the tests to your Cypress Dashboard account. 
+Once logged in click on ‘Runs’. Here you can create a new Cypress Dashboard project. Click `Set up a new project`.
 
-To be able to use this key we will take a look at the example.env file. Copy the contents inside the file and create a new ‘.env’ file and paste the contents. Now we need to copy the record key to the right side of the assignment operator
+![](./readme_images/1.5.5.png)
+
+Leave all the details the same but select `Public` and then `Set up project`.
+
+![](./readme_images/1.5.6.png)
+
+You will then be able to see your `projectId` and your record key needed to authorise your cypress test runner to record the tests to your Cypress Dashboard account. Your projectId should already be updated in your `cypress.json` file.
+
+![](./readme_images/1.5.7.png)
+
+To be able to use the dashboard access key we will take a look at the `example.env` file. This file is a templates file for environment variables that your application needs. Right click and copy the `example.env` file and paste it back into the repository. Rename it to `.env`. 
+Now we need to copy the record key to the right side of the assignment operator in our `.env` file. 
 
 `CYPRESS_RECORD_KEY=<your-cypress-dashboard-key>`
 e.g. `CYPRESS_RECORD_KEY= XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX`
 
-You will also need to copy the ‘Project ID’ from ‘Cypress->Settings->Project ID’ and place this value into the cypress.json file, replacing the temporary value that was assigned. 
-
-Let’s test we have managed to integrate. We will do this by opening another terminal inside of visual studio code to run the application with `yarn start`. Once the application is running you should see this message ‘Compiled successfully’ in the terminal.
- 
-![](./readme_images/terminal-application-running.png)
-
-We need to kill cypress in the first terminal (1: node) by navigating back and doing `ctrl+c` (Or you can manually close cypress). 
+Now let’s test we have managed to integrate with Cypress Dashboard. We will do this by opening another terminal inside of visual studio code to run the application with `yarn start`. Once the application is running you should see this message `Compiled successfully` in the terminal.
 
  ![](./readme_images/navigate-terminals.png)
+
+Now we need to kill cypress in the first terminal (1: node) by navigating back and doing `ctrl+c`. Or you can manually close cypress. 
 
 Once cypress is killed we need to export our cypress key by running `export CYPRESS_RECORD_KEY=< your-cypress-dashboard-key>`. You can copy this from your .env file to save you some time. 
 
 There is an initial test that has already been written so we can test our configuration with Cypress Dashboard. If we go to the package.json file scripts object we can see there is a command called `test-dashboard`. We will run this in our terminal with `yarn test-dashboard`. This command contains the following flags `--report` and `--key` which let cypress know we wish to record our results to Cypress dashboard along with where it can find the environment key for authentication. 
 
+Run the command `yarn test-dashboard`.
+
 Feel free to look through the output in the console. You will see the test run and pass along with a video being created. The most important part to take note of is the ‘Uploading Results’ section as this tells us if it was successfully uploaded to our cypress dashboard. We can now confirm this by going to our cypress dashboard account. 
+
+Refresh the page and you will see there is now a project that has been created. Click on the `Hands-on-with-Cypress-and-Cypress-Dashboard`. 
 
  ![](./readme_images/cypress-dashboard-log.png)
 
@@ -97,21 +138,48 @@ Awesome! Looks like it is working correctly. If you have sped ahead please take 
 
 Before we wrap this section of Cypress Dashboard up, there is one more configuration to make. This is with adding the GitHub Webhook integration. 
 
-In Cypress Dashboard go to ‘Integrations’ and select ‘Install’ for GitHub. 
+In Cypress Dashboard click `View all projects` and go to ‘Integrations’ and select `Install GitHub integration`. 
 
  ![](./readme_images/github-integration.png)
+ 
+You will be redirected to GitHub where you chose to allow Cypress Dashboard access to all repositories in your account or you can just select this repository ‘Hands-on-with-Cypress-and-Cypress-Dashboard’ and click `Install`. 
 
-You will be redirected to GitHub where you chose to allow Cypress Dashboard access to all repositories in your account or you can just select this repository ‘playground-cypress-dashboard’.
+> Note: There might be some variation of this depending on your GitHub account type and if you are part of any organisations. 
 
 ![](./readme_images/cypress-install-github.png)
- 
-Once installed Cypress Dashboard will submit status checks for your cypress test runs on pull requests. We can make this check required by configuring the settings of our GitHub repo. Go to your GitHub Repo and click on ‘Settings’. As you have forked this repository it will have inherited the branch protection policies that were already set up. 
+
+Once installed Cypress Dashboard will submit status checks for your cypress test runs on pull requests. 
+
+> Tip: If you get a `Cannot connect to repository` error or warning then you will need to further configure Cypress Dashboard but clicking `Configure`. Then select your repository again. 
+
+If you click on `Configure` you will need to update the `Default branch` to `develop`. 
+
+![](./readme_images/1.12.png)
+
+Very quickly let’s commit our changes to the `develop` branch. 
+
+In VS Code type the following commands:
+
+`git checkout develop`
+`git add .`
+`git commit -m ‘cypress dashboard setup’`
+`git push`
+
+If you get the following error like I did follow the run commands in the terminal with your GitHub details: 
+
+![](./readme_images/1.13.png)
+
+Then repeat the git commit steps above again. You will then get the following pop-up.
+
+![](./readme_images/1.14.png)
+
+Click `Allow` which will then go through the process of authorising Visual Studio Code access to your GitHub account. It might fail the first time or hang. Try `ctrl+c` and if still not responsive refresh the instance in your local browser. 
 
 Next we will move onto the next section with adding in CI to trigger this Cypress Integration – Automating Cypress Tests though AWS Code Build.
 
 # Stage 2: Automating Cypress Tests in CI
 
-Ok, so we how have Cypress Dashboard linked up to our GitHub repo. Now it is time to set up our CI pipeline in Code Build. To do so log into the aws.amazon.com console with either your own account or IAM user or the one that we have provided. 
+Ok, so we how have Cypress Dashboard linked up to our GitHub repo. Now it is time to set up our CI pipeline in Code Build. To do so log into https://aws.amazon.com/console with either your own account or IAM user or the one that we have provided. 
 
 ![](./readme_images/2.1.png)
 
@@ -128,6 +196,7 @@ Fill out the following Details:
 For `Source provider` select GitHub. If you are using our AWS account you will need your github repository to be public and copy and paste the HTTPS URL into the repository Source.
 
 ![](./readme_images/2.3.png)
+![](./readme_images/2.5.png)
 
 If you are using your own AWS account you will need to do the following steps (skip this if following along).
 
@@ -143,16 +212,14 @@ Click on `Authorize aws-codesuite` congratulations you have joined the cool club
 
 Next click on `Repository in my GitHub account` and click on the GitHub repository box and select `<your-github-username>/playground-cypress-dashboard` from the dropdown. 
 
---END--
-
-Then check the `Rebuild every time a code change is pushed` box. It should look like below. 
-
-![](./readme_images/2.5.png)
+Then check the `Rebuild every time a code change is pushed` box.
 
 For event type select the following
 `PULL_REQUEST_CREATED`
 `PULL_REQUEST_UPDATED`
 `PULL_REQUEST_REOPENED`
+
+--END--
 
 Now for the Environment section make sure you select the following: 
 
@@ -164,10 +231,9 @@ Now for the Environment section make sure you select the following:
 * Environment type `Linux`
 * Privileged : checked
 
-![](./readme_images/2.6.png)
+![](./readme_images/2.20.png)
 
-For `Service role` select `Existing service role`. Then for `Role ARN` use:  `arn:aws:iam::630895193694:role/codebuild-playground-animal-service-role`. 
-Uncheck `Allow AWS CodeBuild to modify this service role so it can be used with this build project`
+For `Service role` select `Existing service role`. Then for `Role ARN` use:  `arn:aws:iam::630895193694:role/service-role/codebuild-playground-<your-animal>-service-role`. De-select `Allow AWS CodeBuild…`
 
 Next, click on Additional configuration and scroll down to `Environment variables`. Here is where we need to add our Cypress Dashboard access key from our .env file. 
 For Name enter: `CYPRESS_RECORD_KEY` and for value enter your key. We will keep Type as `Plaintext` this time but better practice would be to use the AWS Secrets Manager. 
@@ -180,37 +246,22 @@ Then there are three stages with commands that we ran in the terminal when setti
 
 Under the `scripts` object we can see this command runs ` docker-compose up --exit-code-from cypress`. Docker-compose is a way of creating a docker container system which is useful for testing our application on any environment. If you take a look at the `docker-compose.yml` file you can see the cypress image that we use as a base along with the environment variables needed by our application. It also depends on the react-app image which will be created from the `Dockerfile` if it does not already exist. 
 
-Before we create a PR request let’s first test out the `yarn test-ci` in the terminal to check our files are configured properly. 
+We can now go back to AWS and create a build off our develop branch. This is because of OAuth setup. If you were using your own AWS account with OAuth you could set CodeBuild to trigger on pull requests. For now we will have to do this manually. 
 
-> Hint: you may need to `export` your `CYPRESS_RECORD_KEY` from your .env file. 
+Click on `Start build`.
 
-Let’s commit our configuration to a new branch. The easiest way is to select the bottom left branch name. This will then open up a popup. Select `Create new branch from…` then enter a name of your branch, for example `dashboard-setup`.
+![](./readme_images/2.21.png)
 
-![](./readme_images/2.7.png)
+Under `Source version` type in `develop` and then click `Start build`. You should see build status in progress and you can watch the logs as the docker images and containers build. Eventually you will be able to see the tests running. 
 
-Then select `origin/develop`. Now in terminal enter the following commands:
-
-* `git add .`
-* `git commit -m ‘dashboard setup’`
-* ` git push --set-upstream origin <your-branch-name> `
-
-Go to your GitHub repository and make a pull request. Make sure you select your repository and the `develop` branch as the base. It should look like below and click `Create pull request`. 
-
-![](./readme_images/2.8.png)
-
-Now go back to AWS CodeBuild and refesh the page. You should see there is now a build in progress. 
-
-![](./readme_images/2.9.png)
-
-If you click on this you will be able to see the logs from the CI pipeline. When it is finished be sure to check Cypress Dashboard. You will see new test runs have been logged since we last checked!
-
-Also if you go back to GitHub you will see there are now checks pending on our Pull Request. 
+If you were using your own AWS account you would be able to see checks pending if you made Pull Requests. For the paid version of GitHub, such as Teams or Enterprise you can make these checks required preventing merges unless CodeBuild is successful. 
 
 ![](./readme_images/2.10.png)
 
-![](./readme_images/2.11.png)
- 
-Once everything is green go ahead and click `Merge pull request`. 
+
+If you click back to Cypress Dashboard you will see that there is a new test run from our CodeBuild pipeline.  
+
+![](./readme_images/2.30.png)
 
 And there you have it. Now we have set up Cypress Dashboard to run locally and in our CI pipeline. Now it is time for the final stage. Getting hands on with writing some Cypress tests!
 
