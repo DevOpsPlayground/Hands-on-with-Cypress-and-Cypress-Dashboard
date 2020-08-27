@@ -195,7 +195,6 @@ Fill out the following Details:
 
 For `Source provider` select GitHub. If you are using our AWS account you will need your github repository to be public and copy and paste the HTTPS URL into the repository Source.
 
-![](./readme_images/2.3.png)
 ![](./readme_images/2.5.png)
 
 If you are using your own AWS account you will need to do the following steps (skip this if following along).
