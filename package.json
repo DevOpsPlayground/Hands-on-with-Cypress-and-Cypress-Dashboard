@@ -2,7 +2,15 @@
   "name": "aws-react-app-pipeline",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "cypress-open": "cypress open",
+    "test": "cypress run --project ./",
+    "test-dashboard": "cypress run --record --key $CYPRESS_RECORD_KEY",
+    "test-ci": "docker-compose up --exit-code-from cypress"
+  },
+   "dependencies": {
     "@babel/preset-env": "7.8.2",
     "@babel/preset-react": "7.8.0",
     "axios": "^0.19.2",
@@ -17,14 +25,6 @@
     "react-router-dom": "^6.0.0-alpha.5",
     "react-scripts": "^3.4.0",
     "typescript": "^3.9.5"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "cypress-open": "cypress open",
-    "test": "cypress run --project ./",
-    "test-dashboard": "cypress run --record --key $CYPRESS_RECORD_KEY",
-    "test-ci": "docker-compose up --exit-code-from cypress"
   },
   "eslintConfig": {
     "extends": "react-app"
