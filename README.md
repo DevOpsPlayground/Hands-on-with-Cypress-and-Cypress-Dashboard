@@ -207,8 +207,6 @@ If you are using your own AWS account you will need to do the following steps (s
 
 Click on `Authorize aws-codesuite` congratulations you have joined the cool club of less then 1k other people who use this integration! Once clicking you will be prompted to enter your password. Then select `Confirm`. 
 
-![](./readme_images/2.4.5.png)
-
 Next click on `Repository in my GitHub account` and click on the GitHub repository box and select `<your-github-username>/playground-cypress-dashboard` from the dropdown. 
 
 Then check the `Rebuild every time a code change is pushed` box.
