@@ -1,6 +1,10 @@
 # Initial Set Up - Check Before You Start!
 
+This is a very challenging to implement playground where we are using a new open source technology in order to be able to deliever it. As it is all very new and the first playground to test this out please feel free to continue the playground from your local machine at any point. 
+
 Do you have a GitHub account? If not sign up here: https://github.com/
+You may want to create a throw away GitHub accont for this playground because of integrations and having to authorise GitHub for use on our instance. 
+> Note: The instances will be shortly destroyed after the playground so any sensitive keys will be removed and not stored. 
 
 Have you logged into Guacamole?
 Log in via the IP: http://54.171.164.67/#/
@@ -62,7 +66,11 @@ Maximise VS Code if you have not already. Click `Terminal` at the top of the scr
 
 ![](./readme_images/1.3.2.png)
 
-In the terminal enter the following command (right click paste your repository link): 
+There are 2 ways to clone your repository into our instance. If you do not want to store your GitHub login details into the environment of our instance you can do this: 
+
+`git clone user:pass@https://github…`
+
+If you don't mind your credentials being in our instance during the time it is up then in the terminal enter the following command (right click paste your repository link): 
 
 `git clone <link to your GitHub repo>`
 
