@@ -238,7 +238,7 @@ Now for the Environment section make sure you select the following:
 
 ![](./readme_images/2.20.png)
 
-For `Service role` select `Existing service role`. Then for `Role ARN` use:  `arn:aws:iam::630895193694:role/service-role/codebuild-playground-<your-animal>-service-role`. De-select `Allow AWS CodeBuild…`
+For `Service role` select `Existing service role`. Then for `Role ARN` use:  `arn:aws:iam::630895193694:role/codebuild-playground-service-role`. De-select `Allow AWS CodeBuild…`
 
 Next, click on Additional configuration and scroll down to `Environment variables`. Here is where we need to add our Cypress Dashboard access key from our .env file. 
 For Name enter: `CYPRESS_RECORD_KEY` and for value enter your key. We will keep Type as `Plaintext` this time but better practice would be to use the AWS Secrets Manager. 
